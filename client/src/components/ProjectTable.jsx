@@ -1,0 +1,4 @@
+export default function ProjectTable({ projects, onEdit, onDelete }) {
+  if (!projects.length) return <div className="empty-state"><h2>No projects found.</h2><p>Try changing the filters, or add a research project.</p></div>;
+  return <div className="project-table"><div className="table-row table-header"><span>PROJECT</span><span>CODE</span><span>RESEARCH AREA</span><span>STATUS</span><span>LEAD</span><span></span></div>{projects.map((project) => <div className="table-row" key={project.id}><strong>{project.name}</strong><span>{project.code}</span><span>{project.area}</span><span><i className={`status ${project.status.toLowerCase().replaceAll(" ", "-")}`}>{project.status}</i></span><span>{project.lead}</span><span className="row-actions"><button onClick={() => onEdit(project)}>Edit</button><button onClick={() => onDelete(project)}>Delete</button></span></div>)}</div>;
+}
